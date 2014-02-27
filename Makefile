@@ -1,9 +1,8 @@
 # pod Makefile created using pods-tools/create-configure-pod.sh
 
-FETCH_URL=https://code.google.com/p/lcm/downloads/detail?name=lcm-1.0.0.tar.gz
+FETCH_URL=https://lcm.googlecode.com/files/lcm-1.0.0.tar.gz
 POD_NAME=lcm-1.0.0
 
-default_target: all
 
 # Default to a less-verbose build.  If you want all the gory compiler output,
 # run "make VERBOSE=1"
@@ -26,23 +25,8 @@ ifeq "$(BUILD_TYPE)" ""
 BUILD_TYPE="Release"
 endif
 
-all: pod-build/Makefile
-	$(MAKE) -C pod-build all install
-
-pod-build/Makefile:
-	$(MAKE) configure
-
-.PHONY: configure
-configure: pkgconfiged.touch
-	@echo "\nBUILD_PREFIX: $(BUILD_PREFIX)\n\n"
-
-	# create the temporary build directory if needed
-	@mkdir -p pod-build
-
-	# run CMake to generate and configure the build scripts
-	@cd pod-build && cmake -DCMAKE_INSTALL_PREFIX=$(BUILD_PREFIX) \
-		   -DCMAKE_BUILD_TYPE=$(BUILD_TYPE) ..
-
+all: pkgconfiged.touch
+	@echo "Installed LCM"
 
 fetched.touch:
 	$(MAKE) fetch
