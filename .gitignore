@@ -1,0 +1,7 @@
+pod-build/
+*~
+*.touch
+*.tar.*
+lcm-1.0.0/
+
+
