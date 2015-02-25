@@ -1,6 +1,6 @@
 # pod Makefile created using pods-tools/create-configure-pod.sh
 
-FETCH_URL=https://lcm.googlecode.com/files/lcm-1.0.0.tar.gz
+FETCH_URL=https://github.com/lcm-proj/lcm/archive/v1.0.0.tar.gz
 POD_NAME=lcm-1.0.0
 
 
@@ -56,6 +56,7 @@ unarchive:
 build-source:
 	@echo "\n Building $(POD_NAME) \n"
 	@mkdir -p pod-build
+	cd $(POD_NAME) && ./bootstrap.sh
 	cd pod-build && ../$(POD_NAME)/configure --prefix=$(BUILD_PREFIX)
 	cd pod-build && make
 	@touch built.touch
